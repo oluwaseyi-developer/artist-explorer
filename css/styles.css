@@ -649,12 +649,14 @@ body {
   background-color: rgba(0, 0, 0, 0.9);
   z-index: 2000;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  visibility: hidden;
 }
 
 .modal.active {
   display: flex;
   opacity: 1;
+  visibility: visible;
 }
 
 .modal-content {
@@ -666,11 +668,16 @@ body {
   padding: 0;
 }
 
+.modal.closing .video-container {
+    opacity: 0;
+}
+
 .video-container {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
   overflow: hidden;
+  transition: opacity 0.2s ease;
 }
 
 .video-container iframe {

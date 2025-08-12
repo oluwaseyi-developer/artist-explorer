@@ -60,13 +60,24 @@ function setupEventListeners() {
         }
     });
 
-        // Add this to your setupEventListeners()
-    document.querySelector('.close-modal').addEventListener('click', () => {
-    const iframe = document.querySelector('.video-container iframe');
-    if (iframe) {
-        iframe.src = ''; // Stop video when closing
-    }
-    closeVideoModal();
+       // Video modal close button
+    document.querySelector('.close-modal').addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeVideoModal();
+    });
+    
+    // Click outside modal to close
+    document.getElementById('videoModal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('videoModal')) {
+            closeVideoModal();
+        }
+    });
+    
+    // Escape key to close modal
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && document.getElementById('videoModal').classList.contains('active')) {
+            closeVideoModal();
+        }
     });
     
     // Tab navigation
