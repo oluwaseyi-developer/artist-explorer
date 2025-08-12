@@ -90,16 +90,33 @@ const SpotifyAPI = {
 
 // YouTube API functions
 const YouTubeAPI = {
-   async searchVideos(artistId) {
-        const artistName = document.getElementById('artistName').textContent;
-        const query = `${artistName} music`;
-        
-        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&q=${encodeURIComponent(query)}&type=video&key=${YOUTUBE_API_KEY}`);
-        
-        const data = await response.json();
-        return data.items || [];
-        }
+  async searchVideos(artistName) {
+    try {
+      const response = await fetch(
+        `https://www.googleapis.com/youtube/v3/search?` +
+        `part=snippet&` +
+        `maxResults=12&` +
+        `q=${encodeURIComponent(artistName + " music")}&` +
+        `type=video&` +
+        `videoEmbeddable=true&` +
+        `key=${YOUTUBE_API_KEY}`
+      );
+      return response.ok ? (await response.json()).items : [];
+    } catch (error) {
+      console.error("YouTube API Error:", error);
+      return [];
+    }
+  },
+
+  getEmbedUrl(videoId) {
+    return `https://www.youtube-nocookie.com/embed/${videoId}?` +
+           `autoplay=1&` +
+           `rel=0&` +              // No related videos
+           `modestbranding=1&` +   // Less YouTube branding
+           `enablejsapi=1`;        // Enable JS API for controls
+  }
 };
+
 
 // Wikipedia API functions
 const WikipediaAPI = {

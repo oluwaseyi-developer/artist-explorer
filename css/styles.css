@@ -618,10 +618,14 @@ body {
   font-weight: 600;
   margin-bottom: 0.5rem;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  display: box; /* Older spec (rarely used now, but adds fallback) */
   -webkit-box-orient: vertical;
+  box-orient: vertical; /* Older spec */
+  -webkit-line-clamp: 2; /* WebKit-specific */
+    line-clamp: 2; /* Standard property */
   overflow: hidden;
 }
+
 
 .video-channel {
   font-size: 0.9rem;
@@ -634,8 +638,73 @@ body {
   opacity: 0.6;
 }
 
-/* Modal */
+/* Video Modal Styles */
 .modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  background-color: transparent;
+  border-radius: var(--border-radius);
+  padding: 0;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-error {
+  padding: 2rem;
+  text-align: center;
+  color: white;
+}
+
+.video-error a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.close-modal {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Modal */
+/* .modal {
   display: none;
   position: fixed;
   top: 0;
@@ -663,7 +732,7 @@ body {
   border-radius: var(--border-radius);
   padding: 2rem;
   animation: modalFadeIn 0.3s ease-out;
-}
+} */
 
 @keyframes modalFadeIn {
   from { opacity: 0; transform: translateY(-20px); }
