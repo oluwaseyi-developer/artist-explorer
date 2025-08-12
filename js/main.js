@@ -378,10 +378,22 @@ function playVideo(videoId) {
 
 function closeVideoModal() {
     const modal = document.getElementById('videoModal');
-    const videoFrame = document.getElementById('videoFrame');
+    const videoContainer = document.querySelector('.video-container');
     
-    videoFrame.src = '';
+    // Stop any playing video
+    const iframe = videoContainer.querySelector('iframe');
+    if (iframe) {
+        iframe.src = ''; // This stops the video
+        iframe.remove(); // Remove the iframe completely
+    }
+    
+    // Reset modal state
     modal.classList.remove('active');
+    
+    // Small delay to allow animation to complete
+    setTimeout(() => {
+        videoContainer.innerHTML = ''; // Clear container completely
+    }, 300);
 }
 
 function switchTab(tabName) {
