@@ -90,15 +90,15 @@ const SpotifyAPI = {
 
 // YouTube API functions
 const YouTubeAPI = {
-    async searchVideos(artistId) {
+   async searchVideos(artistId) {
         const artistName = document.getElementById('artistName').textContent;
         const query = `${artistName} music`;
         
-        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${encodeURIComponent(query)}&type=video&key=${YOUTUBE_API_KEY}`);
+        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&q=${encodeURIComponent(query)}&type=video&key=${YOUTUBE_API_KEY}`);
         
         const data = await response.json();
         return data.items || [];
-    }
+        }
 };
 
 // Wikipedia API functions

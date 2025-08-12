@@ -1,78 +1,64 @@
+/* themes.css - Updated with all requested changes */
+
 /* Dark Theme (Default) */
 [data-theme="dark"] {
-    --bg-color: #121212;
-    --text-color: #ffffff;
-    --primary-color: #1db954; /* Spotify green */
-    --secondary-color: #535353;
-    --hover-bg: #282828;
-    --border-color: #2a2a2a;
-    --card-bg: #181818;
-    --modal-bg: #282828;
+  --bg-color: #121212;
+  --text-color: rgba(255, 255, 255, 0.9);
+  --primary-color: #1db954; /* Spotify green */
+  --secondary-color: #535353;
+  --hover-bg: #282828;
+  --border-color: #2a2a2a;
+  --card-bg: #181818;
+  --modal-bg: #282828;
 }
 
 /* Light Theme */
 [data-theme="light"] {
-    --bg-color: #f9f9f9;
-    --text-color: #333333;
-    --primary-color: #1db954; /* Spotify green */
-    --secondary-color: #e0e0e0;
-    --hover-bg: #f0f0f0;
-    --border-color: #e1e1e1;
-    --card-bg: #ffffff;
-    --modal-bg: #ffffff;
+  --bg-color: #f9f9f9;
+  --text-color: #333333;
+  --primary-color: #1db954; /* Spotify green */
+  --secondary-color: #e0e0e0;
+  --hover-bg: #f0f0f0;
+  --border-color: #e1e1e1;
+  --card-bg: #ffffff;
+  --modal-bg: #ffffff;
 }
 
 /* Apply theme colors */
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .app-header {
-    background-color: var(--card-bg);
+  background-color: var(--card-bg);
 }
 
 .search-input-group input {
-    background-color: var(--card-bg);
-    color: var(--text-color);
+  background-color: var(--card-bg);
+  color: var(--text-color);
 }
 
-.search-button {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.spotify-button {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.save-button {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-    background-color: transparent;
-}
-
-.track-item {
-    background-color: var(--card-bg);
-}
-
-.album-card, .video-card {
-    background-color: var(--card-bg);
-}
-
-.modal-content {
-    background-color: var(--modal-bg);
+.tab-button {
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 .tab-button.active {
-    background-color: var(--card-bg);
+  color: var(--primary-color);
+  opacity: 1;
 }
 
 .tab-button:hover {
-    background-color: var(--hover-bg);
+  opacity: 1;
 }
 
-.track-item:hover {
-    background-color: var(--hover-bg);
+[data-theme="dark"] .theme-toggle button {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+[data-theme="light"] .theme-toggle button {
+  background-color: #f0f0f0;
+  color: #333;
 }

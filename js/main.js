@@ -275,15 +275,22 @@ function displayAlbums(albums) {
     albums.forEach(album => {
         const albumElement = document.createElement('div');
         albumElement.className = 'album-card';
-        albumElement.innerHTML = `
-            <img src="${album.images[0].url}" alt="${album.name}" class="album-image">
-            <div class="album-info">
-                <div class="album-name">${album.name}</div>
-                <div class="album-meta">
-                    <span>${new Date(album.release_date).getFullYear()}</span>
-                    <span>${formatAlbumType(album.album_type)}</span>
+       albumElement.innerHTML = `
+        <div class="album-card">
+            <div class="album-card-inner">
+            <div class="album-card-front">
+                <img src="${album.images[0].url}" alt="${album.name}">
+            </div>
+            <div class="album-card-back">
+                <div class="album-stats">
+                <div>${album.name}</div>
+                <div>${new Date(album.release_date).getFullYear()}</div>
+                <div>${formatAlbumType(album.album_type)}</div>
+                <div>${album.total_tracks} tracks</div>
                 </div>
             </div>
+            </div>
+        </div>
         `;
         
         albumElement.addEventListener('click', () => {
