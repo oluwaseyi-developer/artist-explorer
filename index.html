@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Explorer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-music"></i> Artist Explorer</h1>
+            <div class="search-container">
+                <form id="search-form">
+                    <input type="text" id="artist-search" placeholder="Search for an artist..." required>
+                    <button type="submit"><i class="fas fa-search"></i> Search</button>
+                </form>
+            </div>
+        </header>
+
+        <main>
+            <div class="favorites-section">
+                <h2>Your Favorites</h2>
+                <div id="favorites-container" class="favorites-grid"></div>
+            </div>
+
+            <div class="artist-section hidden">
+                <div class="artist-header">
+                    <div class="artist-image-container">
+                        <img id="artist-image" src="" alt="Artist Image">
+                        <button id="save-artist" class="save-btn"><i class="far fa-heart"></i> Save</button>
+                    </div>
+                    <div class="artist-info">
+                        <h2 id="artist-name"></h2>
+                        <p id="artist-genres"></p>
+                        <p id="artist-followers"></p>
+                        <p id="artist-popularity"></p>
+                        <a id="artist-spotify" href="#" target="_blank"><i class="fab fa-spotify"></i> View on Spotify</a>
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="bio">Bio</button>
+                    <button class="tab-btn" data-tab="tracks">Top Tracks</button>
+                    <button class="tab-btn" data-tab="albums">Albums</button>
+                    <button class="tab-btn" data-tab="videos">Videos</button>
+                </div>
+
+                <div class="tab-content">
+                    <div id="bio" class="tab-pane active">
+                        <div class="bio-content">
+                            <h3>About the Artist</h3>
+                            <p id="artist-bio">Search for an artist to view their bio and information.</p>
+                        </div>
+                    </div>
+
+                    <div id="tracks" class="tab-pane">
+                        <div class="tracks-container">
+                            <h3>Top Tracks</h3>
+                            <ul id="tracks-list"></ul>
+                        </div>
+                    </div>
+
+                    <div id="albums" class="tab-pane">
+                        <div class="albums-container">
+                            <h3>Albums</h3>
+                            <div id="albums-grid" class="albums-grid"></div>
+                        </div>
+                    </div>
+
+                    <div id="videos" class="tab-pane">
+                        <div class="videos-container">
+                            <h3>Related Videos</h3>
+                            <div id="videos-grid" class="videos-grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Video Modal -->
+        <div id="video-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <div id="video-player"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="utils/api.js"></script>
+    <script src="utils/storage.js"></script>
+    <script src="components/artistCard.js"></script>
+    <script src="components/albumCard.js"></script>
+    <script src="components/videoEmbed.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
