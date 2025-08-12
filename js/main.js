@@ -358,31 +358,24 @@ function displayVideos(videos) {
 }
 
 function playVideo(videoId) {
-  const modal = document.getElementById('videoModal');
-  const videoContainer = document.querySelector('.video-container');
-  
-  // Clear previous content
-  videoContainer.innerHTML = '';
-  
-  // Create new iframe with proper attributes
-  const iframe = document.createElement('iframe');
-  iframe.src = YouTubeAPI.getEmbedUrl(videoId);
-  iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-  iframe.allowFullscreen = true;
-  iframe.title = 'YouTube video player';
-  iframe.loading = 'lazy';
-  
-  // Error handling
-  iframe.onerror = () => {
-    videoContainer.innerHTML = `
-      <div class="video-error">
-        <p>Could not load video. <a href="${YouTubeAPI.getEmbedUrl(videoId)}" target="_blank">Open in YouTube</a></p>
-      </div>
-    `;
-  };
-  
-  videoContainer.appendChild(iframe);
-  modal.classList.add('active');
+    const modal = document.getElementById('videoModal');
+    const videoContainer = document.querySelector('.video-container');
+    
+    // Clear any existing content
+    videoContainer.innerHTML = '';
+    
+    // Create new iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = YouTubeAPI.getEmbedUrl(videoId);
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.title = 'YouTube video player';
+    
+    videoContainer.appendChild(iframe);
+    modal.classList.add('active');
+    
+    // Focus the modal for keyboard accessibility
+    modal.focus();
 }
 
 
